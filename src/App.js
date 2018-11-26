@@ -70,11 +70,10 @@ class App extends Component {
   }
 }
 
-class Search extends Component {
-  render() {
-    const { value, onChange, children } = this.props;
-    return (
-      <form>
+const Search = ({ value, onChange, children })  => {
+  
+  return (
+  <form>
         {children}
       <input 
              type="text"
@@ -82,13 +81,12 @@ class Search extends Component {
              onChange={onChange}
       />
       </form>
-    )
-  }
+  );
 }
 
-class Table extends Component {
-  render() {
-    const {list, pattern, onDismiss} = this.props;
+
+const Table =  ({list, pattern, onDismiss}) => {
+
     return (
       <div>
       {list.filter(isSearched(pattern)).map(item =>
@@ -100,18 +98,32 @@ class Table extends Component {
           <span>{item.num_comments}</span>
           <span>{item.points}</span>
           <span>
-            <button
+            <Button
               onClick={() => onDismiss(item.objectID)}
               type="button"
             > 
               Dismiss
-    </button>
+            </Button>
           </span>
         </div>
       )}
       </div>
-    )
+    );
   }
-}
+
+
+const Button = ({onClick, className = '', children}) => {
+ 
+  return (
+      <button 
+      onClick={onClick}
+      className={className}
+      type="button"
+      >
+      {children}
+      </button>
+    );
+  }
+
 
 export default App;
