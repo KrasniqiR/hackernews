@@ -83,8 +83,6 @@ class App extends Component {
         [searchKey]: {hits: updatedHits, page }
       }
     });
-    console.log(this.state)
-
   }
 
 
